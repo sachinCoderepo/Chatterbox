@@ -8,7 +8,7 @@ from flask import Flask, current_app,request
 from flask_login import AnonymousUserMixin, UserMixin
 # from app.exceptions import ValidationError
 from . import db, login_manager
-app = Flask(__name__)
+
 
 class Permission:
     FOLLOW = 1
@@ -257,19 +257,19 @@ class User(UserMixin, db.Model):
 #         }
 #         return json_user
 
-    # def generate_auth_token(self, expiration):
-    #     s = Serializer(current_app.config['SECRET_KEY'],
-    #                    expires_in=expiration)
-    #     return s.dumps({'id': self.id}).decode('utf-8')
+    def generate_auth_token(self, expiration):
+        s = Serializer(current_app.config['SECRET_KEY'],
+                       expires_in=expiration)
+        return s.dumps({'id': self.id}).decode('utf-8')
 
-    # @staticmethod
-    # def verify_auth_token(token):
-    #     s = Serializer(current_app.config['SECRET_KEY'])
-    #     try:
-    #         data = s.loads(token)
-    #     except:
-    #         return None
-    #     return User.query.get(data['id'])
+    @staticmethod
+    def verify_auth_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return None
+        return User.query.get(data['id'])
 
     def __repr__(self):
         return '<User %r>' % self.username
