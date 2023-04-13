@@ -1,21 +1,18 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-# api SK5e62c4584edae01b56b11311a3d94bce
-# seret lhjVMeVsN0wUHklv6oFV8ZSypLiyoGie
 
-# ffpyfqdktlereten
 class Config:
 
 # Flask-Mail configuratio
     SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
     MAIL_SENDER = 'sachindwivedi772@gmail.com'
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
-    # MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.googlemail.com')
-    # MAIL_PORT = int(os.environ.get('MAIL_PORT', '587'))
+    MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.googlemail.com')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT', '587'))
     # MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in \
     #     ['true', 'on', '1']
-    # MAIL_USERNAME = ('sachindwivedi772@gmail.com')
-    # MAIL_PASSWORD = 'Sachindiwedi@1997'
+    MAIL_USERNAME = ('sachindwivedi772@gmail.com')
+    MAIL_PASSWORD = 'Sachindiwedi@1997'
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = 'Flasky Admin <sachindwivedi772@gmail.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
